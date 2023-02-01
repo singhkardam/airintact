@@ -1,0 +1,17 @@
+<form class="user" (submit)="onAccountSubmit(AccountSubmitForm)" #AccountSubmitForm="ngForm">
+    <div class="form-group">
+        <input type="text" class="form-control form-control-user" placeholder="Enter Your Account Number..." name="account_number" ngModel required />
+    </div>
+    <div class="form-group">
+        <input type="password" class="form-control form-control-user" placeholder="Confirm Your Account Number..." name="confirm_account_number" ngModel required />
+    </div>
+    <div class="form-group">
+        <input type="text" class="form-control form-control-user" placeholder="Enter Your Account Name..." name="account_name" ngModel required />
+    </div>
+    <div class="form-group">
+        <input type="text" class="form-control form-control-user" placeholder="Enter Your Bank IFSC Code..." name="bank_ifsc_code" ngModel required />
+    </div>
+    <button type="submit" class="btn btn-primary btn-user btn-block">
+        Submit your account details
+    </button>
+</form>

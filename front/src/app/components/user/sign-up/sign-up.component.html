@@ -1,0 +1,82 @@
+  <div class="container">
+    <div class="row my-3">
+        <div class="col-md-12">
+            <div class="alert alert-danger" role="alert" *ngIf="invalidInput">
+                {{errorMsg}}
+            </div>
+            <div class="alert alert-success" role="alert" *ngIf="validInput">
+                Success
+            </div>
+        </div>
+    </div>
+    <div class="card o-hidden border-0 shadow-lg my-3">
+        <div class="card-body p-0">
+            <!-- Nested Row within Card Body -->
+            <div class="row">
+                <div class="col-lg-5 d-none d-lg-block bg-register-image">
+                  <div class="curv-up"></div>
+                </div>
+                <div class="col-lg-7">
+                    <div class="p-5">
+                        <div class="text-center">
+                            <h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
+                        </div>
+                        <form class="user" (submit)="signUp(signUpForm)" #signUpForm="ngForm">
+                            <div class="form-group row">
+                                <div class="col-sm-6 mb-3 mb-sm-0">
+                                    <label>Reference Id<sup class="text-danger">*</sup></label>
+                                    <select class="form-control form-control-user form-select" placeholder="Reference Id" name="parent_id" ngModel required>
+                                        <option value="" selected disabled>Reference Id</option>
+                                        <option *ngFor="let option of options;let i = index" [value]="option">{{option}}</option>
+                                    </select>
+                                </div>
+                                <div class="col-sm-6">
+                                    <label>Your Name</label>
+                                    <input type="text" class="form-control form-control-user" placeholder="Your Name" name="your_name" ngModel required />
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-6 mb-3 mb-sm-0">
+                                    <label>User Name <small>(use for login)</small><sup class="text-danger">*</sup></label>
+                                    <input type="text" class="form-control form-control-user" placeholder="User Name" name="user_name" ngModel required />
+                                </div>
+                                <div class="col-sm-6">
+                                  <label>Mobile Number <sup class="text-danger">*</sup></label>
+                                    <input type="number" class="form-control form-control-user" placeholder="Mobile Number" name="mobile_number" ngModel required minlength="10" />
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-6 mb-3 mb-sm-0">
+                                    <label>Password <sup class="text-danger">*</sup></label>
+                                    <input type="password" class="form-control form-control-user" placeholder="Password" name="password" ngModel required />
+                                </div>
+                                <div class="col-sm-6">
+                                    <label>Repeat Password <sup class="text-danger">*</sup></label>
+                                    <input type="password" class="form-control form-control-user" placeholder="Repeat Password" name="confirm_password" ngModel required />
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-12 d-flex align-items-center">
+                                    <input type="checkbox" name="terms" ngModel required /> <span class="mx-1 f-xs-10">I agree with <a routerLink="/t-and-c">Terms, Privacy Policy</a> of Air Intact.</span>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-user btn-block">
+                                Register Account
+                            </button>
+                            <hr />
+                            <a routerLink="" class="btn btn-google btn-user btn-block"> <i class="fab fa-google fa-fw"></i> Register with Google </a>
+                            <a routerLink="" class="btn btn-facebook btn-user btn-block"> <i class="fab fa-facebook-f fa-fw"></i> Register with Facebook </a>
+                        </form>
+                        <hr />
+                        <div class="text-center">
+                            <a class="small" routerLink="/">Forgot Password?</a>
+                        </div>
+                        <div class="text-center">
+                            <a class="small" routerLink="/">Already have an account? Login!</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

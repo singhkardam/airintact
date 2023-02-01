@@ -1,0 +1,27 @@
+.login-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  >div{
+    h1{
+      font-size: 3em;
+      font-weight: 500;
+    }
+  }
+}
+
+.curv-up{
+  background: #32bba4;
+  height: 156px;
+  transform: rotate(-13deg);
+  margin-top: -75px;
+  margin-left: -35px;
+  width: 730px;
+}
+
+.bg-login-image{
+  background-image: url('../../../../assets/img/logo/air-intact-logo.png');
+  background-size: 225px 225px;
+  background-repeat: no-repeat;
+  background-position: center center;
+}

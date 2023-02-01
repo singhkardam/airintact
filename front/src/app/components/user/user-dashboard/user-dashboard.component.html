@@ -1,0 +1,146 @@
+<div class="container-fluid">
+  <div class="row my-3">
+    <div class="col-md-12">
+        <div class="alert alert-danger d-flex align-items-center justify-content-between d-sm-flex" role="alert" *ngIf="paymentLink">
+          <span><strong>Payment</strong> is pending from your end please click on product page button</span>
+          <a 
+            routerLink="/products" 
+            *ngIf="paymentLink" 
+            class="btn btn-danger">
+            Product Page >>
+          </a>
+        </div>
+    </div>
+  </div>
+  <div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">
+      Hi <span class="text-primary">{{userName | titlecase}}</span> Welcome to Air Intact!
+    </h1>
+  </div>
+  <div class="row">
+    <!-- Earnings (Monthly) Card Example -->
+    <div class="col-xl-3 col-md-6 mb-4">
+        <div class="card border-left-primary shadow h-100 py-2">
+            <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                            Total Earnings</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">{{ totalEarning * 800 | currency: 'INR'}}</div>
+                    </div>
+                    <div class="col-auto">
+                        <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Earnings (Monthly) Card Example -->
+    <div class="col-xl-3 col-md-6 mb-4">
+        <div class="card border-left-success shadow h-100 py-2">
+            <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                            payment received
+                        </div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">{{ 0 | currency: 'INR'}}</div>
+                    </div>
+                    <div class="col-auto">
+                        <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Earnings (Monthly) Card Example -->
+    <div class="col-xl-3 col-md-6 mb-4">
+        <div class="card border-left-info shadow h-100 py-2">
+            <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
+                          Next Payout
+                        </div>
+                        <div class="row no-gutters align-items-center">
+                            <div class="col-auto">
+                                <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">{{ 0 | currency: 'INR'}}</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-auto">
+                        <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Pending Requests Card Example -->
+    <div class="col-xl-3 col-md-6 mb-4">
+        <div class="card border-left-warning shadow h-100 py-2">
+            <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">Unsuccess Ids</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">{{ unSuccessId }}</div>
+                    </div>
+                    <div class="col-auto">
+                        <i class="fas fa-comments fa-2x text-gray-300"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div [ngClass]="!hasAccountInfo ? 'col-md-12' : 'col-md-8'">
+        <div class="card shadow mb-4">
+            <!-- Card Header - Accordion -->
+            <a (click)="toggleIcon = !toggleIcon" href="#collapseCardExample" class="d-block card-header py-3 text-decoration-none" data-bs-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseCardExample">
+                <h6 class="m-0 font-weight-bold text-primary d-flex align-items-center justify-content-between">
+                    <span class="text-primary">Your referral id: - <span class="text-gray-800">{{userInfo.result.user_id}}</span></span>
+                    <span class="plus-icon">
+                        {{toggleIcon ? "+" : "-"}}
+                    </span>
+                </h6>
+            </a>
+            <!-- Card Content - Collapse -->
+            <div class="collapse show" id="collapseCardExample">
+                <div class="card-body">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th scope="col">Name</th>
+                                <th scope="col" class="text-right">Payment</th>
+                            </tr>                            
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let item of childIdInfo">
+                                <td class="font-weight-normal">{{item.your_name |  titlecase }}</td>
+                                <td class="text-right">
+                                    <span class="badge text-white" [ngClass]="item.user_payment == 'null' ? 'bg-danger' : 'bg-success'">
+                                        {{item.user_payment == 'null' ? 'pending' : 'success' | titlecase }}
+                                    </span>
+                                </td>
+                            </tr>                                                     
+                        </tbody>
+                    </table>                    
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4" *ngIf="hasAccountInfo">
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">{{accountDetails}}</h6>
+            </div>
+            <div class="card-body">
+                <app-user-account-details></app-user-account-details>
+            </div>
+        </div>
+    </div>
+</div>
+</div>

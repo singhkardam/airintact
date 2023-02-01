@@ -1,0 +1,44 @@
+<!-- <nav class="mb-5">
+    <div class="d-flex align-items-center justify-content-between">
+      <div>The Chaabi</div>
+      <div>
+        <a mat-button routerLink="/" *ngIf="!userIsAuthenticated">Login</a>
+        <a mat-button routerLink="sign-up" *ngIf="!userIsAuthenticated">Sign Up</a>
+        <button mat-button (click)="onLogOut()" *ngIf="userIsAuthenticated">logout</button>
+      </div>
+    </div>
+</nav> -->
+
+<!-- Topbar -->
+<nav class="navbar navbar-expand navbar-light bg-white topbar static-top shadow">
+  <!-- <h3 routerLink="/" type="button" class="m-0">
+    
+  </h3> -->
+  <span routerLink="/" class="d-flex align-items-center" type="button">
+    <img src="assets/img/logo/air-intact-logo.png" alt="air intact logo" height="50" width="50">
+    <h4 class="h4 mb-0"><span class="text-primary">A</span>ir<span class="text-primary">I</span>ntact</h4>
+  </span>
+
+  <!-- Topbar Navbar -->
+  <ul class="navbar-nav ml-auto">
+      <!-- Nav Item - Alerts -->
+      <li class="nav-item no-arrow mx-1 d-flex align-items-center">
+          <a class="btn btn-sm btn-primary shadow-sm" role="button" routerLink="/" *ngIf="!userIsAuthenticated">
+              LogIn
+          </a>
+      </li>
+      <!-- Nav Item - Messages -->
+      <li class="nav-item no-arrow mx-1 d-flex align-items-center">
+          <a class="btn btn-sm btn-info shadow-sm" role="button" routerLink="sign-up" *ngIf="!userIsAuthenticated">
+              SignUp
+          </a>
+      </li>
+      <!-- Nav Item - Messages -->
+      <li class="nav-item no-arrow mx-1 d-flex align-items-center">
+          <button class="btn btn-sm btn-danger shadow-sm" role="button" (click)="onLogOut()" *ngIf="userIsAuthenticated">
+              Logout
+          </button>
+      </li>
+  </ul>
+</nav>
+<!-- End of Topbar -->

@@ -1,0 +1,55 @@
+<div class="container">
+  <div class="row mb-5">
+    <div class="col-md-12">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>Id</th>
+              <th>Refernce Id</th>
+              <th>Name</th>
+              <th>No. of Child</th>
+              <th class="d-none">Total Payment</th>
+            </tr>
+          </thead>
+          <tbody>
+              <tr *ngFor="let user of allData">
+                  <td>{{ user.id }}</td>
+                  <td>{{ user.refrenceId }}</td>
+                  <td>{{ user.name }}</td>
+                  <td>{{ user.child.length }}</td>
+                  <td class="d-none">{{ math.floor(user.child.length/6) * 800 }}</td>
+              </tr>
+          </tbody>
+        </table>
+    </div>
+  </div>
+
+  <div class="row mb-5">
+    <div class="col-md-12">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>Id</th>
+              <th>Refernce Id</th>
+              <th class="d-none">Total Income</th>
+              <th class="d-none">Remaning Amount</th>
+              <th class="d-none">Payment by Us</th>
+            </tr>
+          </thead>
+          <tbody>
+              <tr *ngFor="let user of allData">
+                  <td>{{ user.id }}</td>
+                  <td>{{ user.refrenceId }}</td>
+                  <td class="d-none">{{ math.floor(user.child.length/6) * 800 }}</td>
+                  <td class="d-none">{{ (math.floor(user.child.length/6) * 800) - 0}}</td>
+                  <td class="d-none">
+                    <form (ngSubmit)="onSubmit($event, math.floor(user.child.length/6) * 800, user.id)">
+                      <input name="paise" value="0" type="number" class="form-control w-25 d-inline me-2" placeholder="paisa dalo">
+                    </form>
+                  </td>
+              </tr>
+          </tbody>
+        </table>
+    </div>
+  </div>
+</div>
